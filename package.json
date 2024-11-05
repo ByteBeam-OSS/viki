@@ -1,0 +1,26 @@
+{
+    "name": "viki",
+    "version": "0.0.1",
+    "description": "Ecosystem management and monitoring service.",
+    "type": "module",
+    "main": "src/main.js",
+    "scripts": {
+      "dev": "node src/main.js"
+    },
+    "dependencies": {
+      "axios": "^1.4.0",
+      "mongodb": "^5.4.0",
+      "vuex": "^4.0.2"
+    },
+    "author": "Sotirios Anagnostopoulos",
+    "license": "GPL-2.0",
+    "engines": {
+      "node": ">=14.0.0"
+    },
+    "contact": {
+      "personal_email": "sotiris4321@gmail.com",
+      "org": "BYTEBEAM LIMITED",
+      "org_email": "connect@byte-beam.io"
+    }
+  }
+  

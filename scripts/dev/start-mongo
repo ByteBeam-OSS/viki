@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# MongoDB Docker container configuration
+CONTAINER_NAME="viki-mongo-dev"
+DB_PORT=27018
+DB_STORAGE_DIR="/srv/viki-db"
+
+# Check if the MongoDB container is already running
+if docker ps --filter "name=$CONTAINER_NAME" --filter "status=running" | grep "$CONTAINER_NAME" > /dev/null; then
+  echo "MongoDB container '$CONTAINER_NAME' is already running on port $DB_PORT."
+else
+  echo "MongoDB container '$CONTAINER_NAME' is not running. Starting MongoDB for development..."
+
+  # Start MongoDB container
+  docker run -d \
+    --name "$CONTAINER_NAME" \
+    -p $DB_PORT:27017 \
+    -v "$DB_STORAGE_DIR":/data/db \
+    mongo:latest
+
+  if [ $? -eq 0 ]; then
+    echo "MongoDB container '$CONTAINER_NAME' started successfully on port $DB_PORT."
+  else
+    echo "Failed to start MongoDB container."
+    exit 1
+  fi
+fi
